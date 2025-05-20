@@ -8,7 +8,7 @@ namespace Alchemy.Editor.Elements
     {
         const string ButtonLabelText = "Invoke";
 
-        public MethodButton(object target, MethodInfo methodInfo, string customName = "")
+        public MethodButton(object target, MethodInfo methodInfo, string customName = null)
         {
             var parameters = methodInfo.GetParameters();
 
