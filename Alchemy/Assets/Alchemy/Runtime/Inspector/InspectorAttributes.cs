@@ -20,6 +20,7 @@ namespace Alchemy.Inspector
     [AttributeUsage(AttributeTargets.Method)]
     public sealed class ButtonAttribute : Attribute
     {
+        public ButtonAttribute() => Name = null;
         public ButtonAttribute(string name) => Name = name;
         public string Name { get; }
     }
