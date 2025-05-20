@@ -8,7 +8,7 @@ namespace Alchemy.Editor.Elements
     {
         const string ButtonLabelText = "Invoke";
 
-        public MethodButton(object target, MethodInfo methodInfo)
+        public MethodButton(object target, MethodInfo methodInfo, string customName = "")
         {
             var parameters = methodInfo.GetParameters();
 
@@ -17,7 +17,7 @@ namespace Alchemy.Editor.Elements
             {
                 button = new Button(() => methodInfo.Invoke(target, null))
                 {
-                    text = methodInfo.Name
+                    text = string.IsNullOrEmpty(customName) ? methodInfo.Name : customName,
                 };
                 Add(button);
                 return;
@@ -30,7 +30,7 @@ namespace Alchemy.Editor.Elements
 
             foldout = new Foldout()
             {
-                text = methodInfo.Name,
+                text = string.IsNullOrEmpty(customName) ? methodInfo.Name : customName,
                 value = false,
                 style = {
                     flexGrow = 1f
